@@ -191,15 +191,23 @@ function clickHandler() {
         var isPalindrome = checkPalindromForAllDateFormats(date);
 
         if(isPalindrome) {
-            outputBox.innerText = "Yay! Your date of birth is a Palindrome";
+            outputBox.innerText = "Yay! Your date of birth is a Palindrome 🎉";
         } else {
             var nextPalindromeDate = getNextPalindromeDate(date);
             var prevPalindromeDate = getPrevPalindromeDate(date);
 
             if( nextPalindromeDate[0] < prevPalindromeDate[0]) {
-                outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + nextPalindromeDate[0] + " days in the future. The date is " + nextPalindromeDate[1].day + "-" + nextPalindromeDate[1].month + "-" + nextPalindromeDate[1].year + " (DD-MM-YYYY).";
+                if( nextPalindromeDate[0] == 1) {
+                    outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + nextPalindromeDate[0] + " day in the future. The date is " + nextPalindromeDate[1].day + "-" + nextPalindromeDate[1].month + "-" + nextPalindromeDate[1].year + " (DD-MM-YYYY).";    
+                } else {
+                    outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + nextPalindromeDate[0] + " days in the future. The date is " + nextPalindromeDate[1].day + "-" + nextPalindromeDate[1].month + "-" + nextPalindromeDate[1].year + " (DD-MM-YYYY).";
+                }
             } else {
-                outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + prevPalindromeDate[0] + " days in the past. The date is " + prevPalindromeDate[1].day + "-" + prevPalindromeDate[1].month + "-" + prevPalindromeDate[1].year + " (DD-MM-YYYY).";
+                if (prevPalindromeDate[0] == 1) {
+                    outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + prevPalindromeDate[0] + " day in the past. The date is " + prevPalindromeDate[1].day + "-" + prevPalindromeDate[1].month + "-" + prevPalindromeDate[1].year + " (DD-MM-YYYY).";
+                } else {
+                    outputBox.innerText = "Sorry your date of birth is not a Palindrome. The closest date of birth is " + prevPalindromeDate[0] + " days in the past. The date is " + prevPalindromeDate[1].day + "-" + prevPalindromeDate[1].month + "-" + prevPalindromeDate[1].year + " (DD-MM-YYYY).";
+                }
             }
         }
     }
